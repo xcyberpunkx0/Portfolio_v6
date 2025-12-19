@@ -1,6 +1,27 @@
 "use client";
 
 import Image from "next/image";
+import {
+  SiCplusplus,
+  SiJavascript,
+  SiPython,
+  SiTypescript,
+  SiSass,
+  SiPostcss,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiMongodb,
+  SiMysql,
+  SiFirebase,
+  SiPostman,
+  SiGithub,
+  SiGooglecloud,
+  SiVercel,
+  SiOpenai,
+  SiGit,
+  SiReact,
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 
 interface Skill {
   [category: string]: string[];
@@ -14,13 +35,56 @@ interface AboutSectionProps {
   skills: Skill;
 }
 
+// Skill item component with icon and text
+const SkillItem = ({ icon: Icon, name }: { icon: React.ComponentType<{ className?: string }>; name: string }) => (
+  <span className="inline-flex items-center gap-1.5">
+    <Icon className="w-4 h-4 opacity-70" />
+    <span>{name}</span>
+  </span>
+);
+
+// Front-end skills with icons
+const frontendSkills = [
+  { icon: SiCplusplus, name: "C/C++" },
+  { icon: FaJava, name: "Java" },
+  { icon: SiJavascript, name: "JavaScript" },
+  { icon: SiPython, name: "Python" },
+  { icon: SiTypescript, name: "TypeScript" },
+];
+
+// Styles skills with icons
+const stylesSkills = [
+  { icon: SiSass, name: "SCSS" },
+  { icon: SiSass, name: "SASS" },
+  { icon: SiPostcss, name: "PostCSS" },
+  { icon: SiTailwindcss, name: "Tailwind" },
+];
+
+// Backend skills with icons
+const backendSkills = [
+  { icon: SiNodedotjs, name: "Node.js" },
+  { icon: SiMongodb, name: "MongoDB" },
+  { icon: SiMysql, name: "MySQL" },
+  { icon: SiFirebase, name: "Firebase" },
+  { icon: SiPostman, name: "Postman" },
+];
+
+// DevOps skills with icons
+const devopsSkills = [
+  { icon: SiGithub, name: "GitHub" },
+  { icon: SiGooglecloud, name: "Google Cloud" },
+  { icon: SiVercel, name: "Vercel" },
+  { icon: SiOpenai, name: "OpenAI" },
+  { icon: SiGit, name: "Git" },
+];
+
 export default function AboutSection({ bio, skills }: AboutSectionProps) {
   return (
     <section id="about" className="py-32 border-t border-[#303030]">
       <div className="max-w-7xl mx-auto">
         <p className="mono text-sm text-white mb-12">... /About me ...</p>
         
-        <div className="grid lg:grid-cols-2 gap-16 items-center relative">
+        <div className="grid lg:grid-cols-2 gap-16 items-center relative overflow-hidden">
           {/* Decorative curved paths and circles */}
           <svg className="absolute top-0 left-1/2 w-full h-full pointer-events-none opacity-50" xmlns="http://www.w3.org/2000/svg">
             {/* Circles */}
@@ -47,87 +111,150 @@ export default function AboutSection({ bio, skills }: AboutSectionProps) {
           <div className="space-y-6 relative z-10">
             <p className="text-xl leading-relaxed mb-8">
               Hello! I'm <span className="font-bold">{bio.name}</span>, I'm a{" "}
-              <span className="italic">software engineer</span>. More than 5 years experience.
+              <span className="italic">software engineer</span>. More than 2 years experience.
             </p>
 
             {/* Front-end Pill */}
             <div className="skill-pill">
               <h3 className="text-lg font-bold mb-3">Front-end</h3>
-              <p className="text-sm text-text-secondary mono">
-                {skills["Programming Languages"]?.slice(0, 5).join(" / ")}
-              </p>
+              <div className="text-sm text-text-secondary mono flex flex-wrap gap-x-3 gap-y-1">
+                {frontendSkills.map((skill, index) => (
+                  <span key={skill.name} className="inline-flex items-center">
+                    <SkillItem icon={skill.icon} name={skill.name} />
+                    {index < frontendSkills.length - 1 && <span className="ml-3">/</span>}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Styles Pill */}
             <div className="skill-pill inline-block">
               <h3 className="text-lg font-bold mb-3">Styles</h3>
-              <p className="text-sm text-text-secondary mono">
-                SCSS / SASS / PostCSS / Tailwind
-              </p>
+              <div className="text-sm text-text-secondary mono flex flex-wrap gap-x-3 gap-y-1">
+                {stylesSkills.map((skill, index) => (
+                  <span key={skill.name} className="inline-flex items-center">
+                    <SkillItem icon={skill.icon} name={skill.name} />
+                    {index < stylesSkills.length - 1 && <span className="ml-3">/</span>}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Back-end Pill */}
             <div className="skill-pill">
               <h3 className="text-lg font-bold mb-3">Back-end</h3>
-              <p className="text-sm text-text-secondary mono">
-                {skills["Backend Development"]?.join(" / ")}
-              </p>
+              <div className="text-sm text-text-secondary mono flex flex-wrap gap-x-3 gap-y-1">
+                {backendSkills.map((skill, index) => (
+                  <span key={skill.name} className="inline-flex items-center">
+                    <SkillItem icon={skill.icon} name={skill.name} />
+                    {index < backendSkills.length - 1 && <span className="ml-3">/</span>}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* DevOps Pill */}
             <div className="skill-pill">
               <h3 className="text-lg font-bold mb-3">DevOps</h3>
-              <p className="text-sm text-text-secondary mono">
-                {skills["Tools & Platforms"]?.join(" / ")}
-              </p>
+              <div className="text-sm text-text-secondary mono flex flex-wrap gap-x-3 gap-y-1">
+                {devopsSkills.map((skill, index) => (
+                  <span key={skill.name} className="inline-flex items-center">
+                    <SkillItem icon={skill.icon} name={skill.name} />
+                    {index < devopsSkills.length - 1 && <span className="ml-3">/</span>}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Technology Icons Display */}
           <div className="relative z-10">
-            <div className="w-full aspect-square rounded-3xl border border-[#303030] p-12 flex items-center justify-center">
-              {/* Scattered Technology Icons */}
+            <div className="w-full aspect-square p-12 flex items-center justify-center">
+              {/* Scattered Technology Icons - Random positions & varied sizes */}
               <div className="relative w-full h-full">
-                {/* React - Top Left */}
-                <div className="absolute top-[10%] left-[15%] opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                  <svg viewBox="0 0 24 24" fill="#f5f5f5" className="w-16 h-16">
-                    <path d="M12 10.11c1.03 0 1.87.84 1.87 1.89 0 1-.84 1.85-1.87 1.85S10.13 13 10.13 12c0-1.05.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7-.52-.59-1.03-1.23-1.51-1.9a23 23 0 0 1-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74-.29-.51c-.11.29-.22.58-.29.86.27.06.57.11.88.16l-.3-.51m6.54-.76.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9c-.6 0-1.17 0-1.71.03-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47.54.03 1.11.03 1.71.03.6 0 1.17 0 1.71-.03.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7.52.59 1.03 1.23 1.51 1.9.82.08 1.63.2 2.4.36.51-2.14.32-3.61-.32-3.96m-.7 5.74.29.51c.11-.29.22-.58.29-.86-.27-.06-.57-.11-.88-.16l.3.51m1.45-7.05c1.47.84 1.63 3.05 1.01 5.63 2.54.75 4.37 1.99 4.37 3.68s-1.83 2.93-4.37 3.68c.62 2.58.46 4.79-1.01 5.63-1.46.84-3.45-.12-5.37-1.95-1.92 1.83-3.91 2.79-5.38 1.95-1.46-.84-1.62-3.05-1-5.63-2.54-.75-4.37-1.99-4.37-3.68s1.83-2.93 4.37-3.68c-.62-2.58-.46-4.79 1-5.63 1.47-.84 3.46.12 5.38 1.95 1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26 2.1-.63 3.28-1.53 3.28-2.26 0-.73-1.18-1.63-3.28-2.26-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26-2.1.63-3.28 1.53-3.28 2.26 0 .73 1.18 1.63 3.28 2.26.25-.76.55-1.51.89-2.26m9.07 1.16c-.27.52-.54 1.02-.81 1.5l.81 1.16M16.62 20c.63-.38 .82-1.84.31-3.96-.77.16-1.58.28-2.4.36-.48.67-.99 1.31-1.51 1.9 1.59 1.5 2.97 2.08 3.6 1.7m-2.59-7.14c-.31.48-.62.93-.91 1.37.29.44.6.89.91 1.37.31-.48.62-.93.91-1.37-.29-.44-.6-.89-.91-1.37z"/>
-                  </svg>
+                {/* React - Large, top area */}
+                <div className="absolute top-[3%] left-[8%] opacity-70 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiReact className="w-20 h-20 text-[#f5f5f5]" />
                 </div>
 
-                {/* TypeScript - Top Right */}
-                <div className="absolute top-[15%] right-[10%] opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                  <svg viewBox="0 0 24 24" fill="#f5f5f5" className="w-14 h-14">
-                    <path d="M1.125 0A1.125 1.125 0 0 0 0 1.125v21.75A1.125 1.125 0 0 0 1.125 24h21.75A1.125 1.125 0 0 0 24 22.875V1.125A1.125 1.125 0 0 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/>
-                  </svg>
+                {/* TypeScript - Medium, right side */}
+                <div className="absolute top-[22%] right-[15%] opacity-60 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiTypescript className="w-14 h-14 text-[#f5f5f5]" />
                 </div>
 
-                {/* Node - Center */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60 hover:opacity-100 hover:scale-110 transition-all">
-                  <svg viewBox="0 0 24 24" fill="#f5f5f5" className="w-20 h-20">
-                    <path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/>
-                  </svg>
+                {/* JavaScript - Small, scattered */}
+                <div className="absolute top-[12%] left-[45%] opacity-50 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiJavascript className="w-8 h-8 text-[#f5f5f5]" />
                 </div>
 
-                {/* Docker - Bottom Left */}
-                <div className="absolute bottom-[15%] left-[20%] opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                  <svg viewBox="0 0 24 24" fill="#f5f5f5" className="w-14 h-14">
-                    <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.186.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.186.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.186.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338 0-.676.03-1.01.09-.248-1.827-1.419-2.771-2.886-3.111a.814.814 0 00-.21-.028.776.776 0 00-.742.554c-.085.3-.087.597-.007.875.162.558.525 1.038 1.082 1.427.082.057.171.11.267.16-.432.085-.795.154-1.094.211-.766.141-1.446.272-2.045.385-3.22.598-5.372-1.125-5.372-3.452v-.74a.18.18 0 00-.091-.158.176.176 0 00-.18 0l-7.168 4.134a.17.17 0 00-.09.15v7.735a.172.172 0 00.091.15l7.168 4.134a.176.176 0 00.18 0l7.168-4.134a.17.17 0 00.09-.15v-2.122c0-.076-.062-.137-.137-.137h-.734a.137.137 0 00-.13 7.137v1.82l-6.48 3.738V13.29l6.48-3.738v.81c0 1.327 1.025 2.415 2.352 2.495.764.046 1.426-.151 1.975-.588.548-.437.879-1.066.93-1.773.007-.064.01-.127.01-.191 0-1.003-.534-1.935-1.35-2.488zm-10.79 9.47l-6.065-3.503v-6.714l6.065 3.502v6.716zm.317-7.38L7.226 8.477l6.065-3.502 6.064 3.503-6.064 3.502zm15.164-1.427c-.063.55-.346 1.038-.798 1.375-.452.337-1.012.5-1.578.459-.963-.058-1.75-.834-1.75-1.726 0-.043.003-.085.008-.126.075-.77.582-1.437 1.242-1.626.103-.03.208-.043.315-.043.72 0 1.358.466 1.59 1.159.067.2.088.408.063.614.003.02.003.04.003.061z"/>
-                  </svg>
+                {/* Java - Very Large */}
+                <div className="absolute top-[55%] left-[5%] opacity-40 hover:opacity-100 hover:scale-110 transition-all">
+                  <FaJava className="w-24 h-24 text-[#f5f5f5]" />
                 </div>
 
-                {/* MongoDB - Bottom Right */}
-                <div className="absolute bottom-[10%] right-[15%] opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                  <svg viewBox="0 0 24 24" fill="#f5f5f5" className="w-12 h-12">
-                    <path d="M13.74 4.23c-.84-1-1.57-2-1.71-2.22H12c-.14.21-.87 1.22-1.71 2.22-7.2 9.19 1.14 15.39 1.14 15.39l.07.05c.06.95.22 2.33.22 2.33h.62s.15-1.37.21-2.33l.07-.06s8.32-6.19 1.12-15.38zM12 19.48a3.48 3.48 0 01-.48-.48L12 9l.45 10a3.57 3.57 0 01-.45.48z"/>
-                  </svg>
+                {/* Node - Medium, offset from center */}
+                <div className="absolute top-[35%] left-[38%] opacity-60 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiNodedotjs className="w-16 h-16 text-[#f5f5f5]" />
                 </div>
 
-                {/* Git - Middle Left */}
-                <div className="absolute top-1/2 left-[5%] -translate-y-1/2 opacity-60 hover:opacity-100 hover:scale-110 transition-all">
-                  <svg viewBox="0 0 24 24" fill="#f5f5f5" className="w-12 h-12">
-                    <path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/>
-                  </svg>
+                {/* TailwindCSS - Small */}
+                <div className="absolute top-[5%] right-[25%] opacity-50 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiTailwindcss className="w-7 h-7 text-[#f5f5f5]" />
+                </div>
+
+                {/* Firebase - Large, lower right */}
+                <div className="absolute bottom-[12%] right-[8%] opacity-50 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiFirebase className="w-18 h-18 text-[#f5f5f5]" />
+                </div>
+
+                {/* Python - Medium */}
+                <div className="absolute bottom-[35%] left-[28%] opacity-70 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiPython className="w-12 h-12 text-[#f5f5f5]" />
+                </div>
+
+                {/* MongoDB - Small */}
+                <div className="absolute top-[60%] right-[35%] opacity-60 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiMongodb className="w-9 h-9 text-[#f5f5f5]" />
+                </div>
+
+                {/* Git - Tiny */}
+                <div className="absolute top-[28%] left-[18%] opacity-40 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiGit className="w-6 h-6 text-[#f5f5f5]" />
+                </div>
+
+                {/* GitHub - Large, bottom left */}
+                <div className="absolute bottom-[5%] left-[35%] opacity-60 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiGithub className="w-16 h-16 text-[#f5f5f5]" />
+                </div>
+
+                {/* Vercel - Medium */}
+                <div className="absolute top-[48%] right-[12%] opacity-50 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiVercel className="w-11 h-11 text-[#f5f5f5]" />
+                </div>
+
+                {/* MySQL - Tiny */}
+                <div className="absolute bottom-[55%] left-[55%] opacity-40 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiMysql className="w-8 h-8 text-[#f5f5f5]" />
+                </div>
+
+                {/* C++ - Very Large, right side */}
+                <div className="absolute top-[8%] right-[3%] opacity-35 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiCplusplus className="w-20 h-20 text-[#f5f5f5]" />
+                </div>
+
+                {/* Postman - Small */}
+                <div className="absolute bottom-[25%] right-[28%] opacity-45 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiPostman className="w-7 h-7 text-[#f5f5f5]" />
+                </div>
+
+                {/* Google Cloud - Medium, bottom */}
+                <div className="absolute bottom-[8%] right-[45%] opacity-50 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiGooglecloud className="w-10 h-10 text-[#f5f5f5]" />
+                </div>
+
+                {/* OpenAI - Tiny, scattered */}
+                <div className="absolute top-[42%] left-[12%] opacity-35 hover:opacity-100 hover:scale-110 transition-all">
+                  <SiOpenai className="w-6 h-6 text-[#f5f5f5]" />
                 </div>
               </div>
             </div>

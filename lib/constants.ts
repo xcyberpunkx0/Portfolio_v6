@@ -14,24 +14,16 @@ export const openSourceProjects = [
 
 export const workProjects = [
     {
-        title: "Audio Player for Voice Notes",
-        description: "Real-time audio player with clean architecture and BLoC state management. Built core features for seamless audio playback with local & remote data sources.",
-        link: "#",
-        tags: ["Flutter", "Firebase", "BLoC", "Audio"],
-        company: "The Aware AI",
-    },
-    {
-        title: "Real-time Chat Streaming",
-        description: "ChatGPT-like streaming experience with optimized API handling. Implemented seamless message streaming with WebSocket integration.",
-        link: "#",
-        tags: ["React", "WebSockets", "API", "TypeScript"],
-        company: "The Aware AI",
-    },
-    {
-        title: "Full Stack Web App",
-        description: "Modern web application with Next.js and Firebase backend. Scalable architecture with server-side rendering and real-time data sync.",
-        link: "#",
-        tags: ["Next.js", "Firebase", "TypeScript", "Tailwind"],
+        title: "Invoice Maker",
+        description: "Developed an invoice generation app, enabling users to create and download invoices. Achieved a 30% reduction in load time by optimizing app performance with Next.js and Vercel deployment. Implemented a responsive UI using Tailwind CSS, increasing mobile usage by 40%. Enhanced app scalability, hosting on Vercel with 99.99% uptime.",
+        link: "https://inv-maker.vercel.app/",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Vercel"],
+        date: "Apr. 2025",
+        images: [
+            "/images/projects/invoice_maker_home.png",
+            "/images/projects/invoice_maker_form.png",
+            "/images/projects/invoice_maker_preview.png",
+        ],
     },
 ];
 

@@ -9,7 +9,8 @@ interface Project {
   tags: string[];
   company?: string;
   link: string;
-  mockups?: string[]; // Array of mockup image paths
+  date?: string;
+  images?: string[];
 }
 
 interface ProjectsSectionProps {
@@ -18,6 +19,7 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hoveredImage, setHoveredImage] = useState<number | null>(null);
 
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
@@ -30,136 +32,139 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const currentProject = projects[currentIndex];
 
   return (
-    <section id="projects" className="py-32 border-t border-[#303030] relative">
+    <section id="projects" className="py-32 border-t border-[#303030] relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <p className="mono text-sm text-white mb-16 text-center">
-          ... /Projects ...
-        </p>
+        <p className="mono text-sm text-white mb-8">... /Projects ...</p>
 
-        <div className="grid grid-cols-12 gap-12 items-center min-h-[600px]">
-          {/* Left Side: Project Details */}
-          <div className="col-span-5 space-y-8">
-            {/* Project Name */}
-            <h2 className="text-5xl font-bold">{currentProject.title}</h2>
+        {/* Project Title - Large Display */}
+        <div className="mb-16">
+          <h2 className="text-7xl font-bold tracking-tight">{currentProject.title}</h2>
+          {currentProject.date && (
+            <p className="mono text-text-secondary mt-4 text-lg">{currentProject.date}</p>
+          )}
+        </div>
 
-            {/* Tech Stack Tags */}
-            <div className="flex flex-wrap gap-3">
+        {/* Creative Image Layout */}
+        <div className="relative min-h-[700px]">
+          {/* Decorative background elements */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20%" cy="40%" r="300" fill="none" stroke="rgba(200, 200, 200, 0.08)" strokeWidth="1" />
+            <circle cx="80%" cy="60%" r="250" fill="none" stroke="rgba(200, 200, 200, 0.06)" strokeWidth="1" />
+            <path d="M 100 400 Q 500 200 900 450" fill="none" stroke="rgba(200, 200, 200, 0.1)" strokeWidth="1" />
+          </svg>
+
+          {currentProject.images && currentProject.images.length > 0 ? (
+            <>
+              {/* Main Hero Image - Large, front and center */}
+              <div 
+                className={`absolute left-0 top-0 w-[55%] transition-all duration-500 ease-out ${
+                  hoveredImage === 0 ? "z-30 scale-[1.02]" : hoveredImage !== null ? "z-10 opacity-70" : "z-20"
+                }`}
+                onMouseEnter={() => setHoveredImage(0)}
+                onMouseLeave={() => setHoveredImage(null)}
+              >
+                <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-[#303030] shadow-2xl bg-[#1a1a1a]">
+                  <Image
+                    src={currentProject.images[0]}
+                    alt={`${currentProject.title} main view`}
+                    fill
+                    className="object-cover object-top"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                </div>
+              </div>
+
+              {/* Second Image - Overlapping right */}
+              {currentProject.images[1] && (
+                <div 
+                  className={`absolute right-0 top-24 w-[50%] transition-all duration-500 ease-out ${
+                    hoveredImage === 1 ? "z-30 scale-[1.02]" : hoveredImage !== null ? "z-10 opacity-70" : "z-10"
+                  }`}
+                  onMouseEnter={() => setHoveredImage(1)}
+                  onMouseLeave={() => setHoveredImage(null)}
+                >
+                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-[#303030] shadow-2xl bg-[#1a1a1a]">
+                    <Image
+                      src={currentProject.images[1]}
+                      alt={`${currentProject.title} form view`}
+                      fill
+                      className="object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  </div>
+                </div>
+              )}
+
+              {/* Third Image - Bottom left, offset */}
+              {currentProject.images[2] && (
+                <div 
+                  className={`absolute left-[15%] bottom-0 w-[45%] transition-all duration-500 ease-out ${
+                    hoveredImage === 2 ? "z-30 scale-[1.02]" : hoveredImage !== null ? "z-10 opacity-70" : "z-15"
+                  }`}
+                  onMouseEnter={() => setHoveredImage(2)}
+                  onMouseLeave={() => setHoveredImage(null)}
+                >
+                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-[#303030] shadow-2xl bg-[#1a1a1a]">
+                    <Image
+                      src={currentProject.images[2]}
+                      alt={`${currentProject.title} preview`}
+                      fill
+                      className="object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="w-full aspect-[16/9] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-3xl border border-[#303030] flex items-center justify-center">
+              <div className="text-6xl opacity-30">💻</div>
+            </div>
+          )}
+        </div>
+
+        {/* Bottom Info Bar */}
+        <div className="mt-20 flex items-end justify-between">
+          {/* Left: Description & Tags */}
+          <div className="max-w-xl space-y-6">
+            <p className="text-text-secondary leading-relaxed">
+              {currentProject.description}
+            </p>
+            
+            <div className="flex flex-wrap gap-2">
               {currentProject.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 border border-[#303030] rounded-full text-sm mono"
+                  className="px-4 py-2 border border-[#303030] rounded-full text-sm mono hover:bg-white hover:text-black transition-colors"
                 >
                   {tag}
                 </span>
               ))}
             </div>
-
-            {/* Description */}
-            <div className="space-y-4">
-              <p className="text-text-secondary leading-relaxed">
-                <span className="font-bold text-foreground">{currentProject.title}</span> - {currentProject.description}
-              </p>
-              
-              {currentProject.company && (
-                <p className="text-sm text-text-secondary italic">
-                  This project comprises several key microservices, each contributing to its overall functionality and prowess.
-                </p>
-              )}
-            </div>
-
-            {/* Navigation Arrow (Left) */}
-            <button
-              onClick={prevProject}
-              className="circle-btn"
-              aria-label="Previous project"
-            >
-              ←
-            </button>
           </div>
 
-          {/* Right Side: Scattered Mockup Images */}
-          <div className="col-span-7 relative h-[600px]">
-            {/* Decorative circles */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-50" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="70%" cy="30%" r="220" fill="none" stroke="rgba(200, 200, 200, 0.22)" strokeWidth="1" />
-              <circle cx="30%" cy="70%" r="180" fill="none" stroke="rgba(200, 200, 200, 0.18)" strokeWidth="1" />
-              <circle cx="85%" cy="15%" r="120" fill="none" stroke="rgba(200, 200, 200, 0.25)" strokeWidth="1" />
-              <circle cx="15%" cy="30%" r="100" fill="none" stroke="rgba(200, 200, 200, 0.15)" strokeWidth="1" />
-              
-              {/* Curved paths */}
-              <path
-                d="M 200 100 Q 400 300 600 200"
-                fill="none"
-                stroke="rgba(200, 200, 200, 0.18)"
-                strokeWidth="1"
-              />
-              <path
-                d="M 600 400 Q 300 250 100 500"
-                fill="none"
-                stroke="rgba(200, 200, 200, 0.2)"
-                strokeWidth="1"
-              />
-            </svg>
-
-            {/* Mockup Images - Artistic scattered layout */}
-            <div className="relative w-full h-full">
-              {/* Large mockup 1 - Top left */}
-              <div className="absolute top-0 left-0 w-48 h-64 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl border border-[#303030] overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-6xl opacity-30">
-                  📱
-                </div>
-              </div>
-
-              {/* Large mockup 2 - Center */}
-              <div className="absolute top-12 left-32 w-80 h-56 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-3xl border border-[#303030] overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-6xl opacity-30">
-                  💻
-                </div>
-              </div>
-
-              {/* Medium mockup 3 - Top right */}
-              <div className="absolute top-0 right-0 w-56 h-64 bg-gradient-to-br from-blue-400/20 to-cyan-500/20 rounded-3xl border border-[#303030] overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-6xl opacity-30">
-                  🎨
-                </div>
-              </div>
-
-              {/* Small mockup 4 - Bottom center */}
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-40 h-48 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-3xl border border-[#303030] overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-5xl opacity-30">
-                  🦊
-                </div>
-              </div>
-
-              {/* Circular navigation button - Center overlay */}
-              <button
-                onClick={nextProject}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 circle-btn z-10"
-                aria-label="Next project"
+          {/* Right: Actions */}
+          <div className="flex items-center gap-4">
+            {currentProject.link && currentProject.link !== "#" && (
+              <a
+                href={currentProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-white"
               >
-                →
-              </button>
-
-              {/* Small floating thumbnail - Top */}
-              <div className="absolute -top-8 left-1/4 w-32 h-32 bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-2xl border border-[#303030] overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-4xl opacity-40">
-                  🌙
-                </div>
+                View Live →
+              </a>
+            )}
+            
+            {projects.length > 1 && (
+              <div className="flex gap-2">
+                <button onClick={prevProject} className="circle-btn" aria-label="Previous">←</button>
+                <button onClick={nextProject} className="circle-btn" aria-label="Next">→</button>
               </div>
-            </div>
+            )}
           </div>
-        </div>
-
-        {/* Bottom Navigation Arrow (Optional) */}
-        <div className="flex justify-end mt-12">
-          <button
-            onClick={nextProject}
-            className="circle-btn"
-            aria-label="Next project"
-          >
-            →
-          </button>
         </div>
       </div>
     </section>

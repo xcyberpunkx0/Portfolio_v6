@@ -19,11 +19,11 @@ export default function HomePage() {
         {/* Work Experience Section */}
         <WorkSection />
 
-        {/* Projects Section - Full page artistic showcase */}
-        <ProjectsSection projects={workProjects} />
-
         {/* About Section */}
         <AboutSection bio={bio} skills={skills} />
+
+        {/* Projects Section - Full page artistic showcase */}
+        <ProjectsSection projects={workProjects} />
 
         {/* Contact Section */}
         <section className="py-32 border-t border-[#303030]">
