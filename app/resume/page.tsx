@@ -63,7 +63,7 @@ export default function ResumePage() {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
               Shaping{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-background px-4">Experiences</span>
+                <span className="relative z-10 text-white px-4">Experiences</span>
                 <span className="absolute inset-0 bg-accent-pink rounded-2xl transform -skew-y-1"></span>
               </span>
               <br />& Building Connections

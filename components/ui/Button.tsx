@@ -15,8 +15,8 @@ export default function Button({
 }: ButtonProps) {
   const baseClasses = "px-8 py-3 rounded-full font-semibold text-sm transition-all duration-300 inline-flex items-center gap-2";
   const variantClasses = {
-    primary: "bg-accent-yellow text-background hover:scale-105 hover:shadow-lg hover:shadow-accent-yellow/30",
-    secondary: "border-2 border-accent-yellow text-accent-yellow hover:bg-accent-yellow hover:text-background",
+    primary: "bg-accent-yellow text-black hover:scale-105 hover:shadow-lg hover:shadow-accent-yellow/30",
+    secondary: "border-2 border-accent-yellow text-accent-yellow hover:bg-accent-yellow hover:text-black",
   };
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${className}`;

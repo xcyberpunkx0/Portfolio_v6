@@ -24,9 +24,14 @@ export default function WorkSection() {
                 <p className="text-text-secondary text-sm mt-1">{work.role}</p>
               </div>
               <div>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  {work.description}
-                </p>
+                <ul className="text-sm text-text-secondary leading-relaxed space-y-1">
+                  {work.description.map((point, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-white/50">•</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

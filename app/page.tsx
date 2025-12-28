@@ -34,7 +34,7 @@ export default function HomePage() {
             <p className="text-xl text-text-secondary mb-12">
               Have a project in mind? Let's create something amazing!
             </p>
-            <a href="#footer">
+            <a href="mailto:adityagup1a@gmail.com">
               <button className="btn-white">
                 Get In Touch
               </button>

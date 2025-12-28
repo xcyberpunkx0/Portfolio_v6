@@ -49,7 +49,6 @@ export const experiences = [
             "Developed and optimized conversation data source repositories for both web and mobile platforms.",
             "Implemented Journal Audio recording and Audio Player features, enhancing in-app communication experience.",
             "Updated and aligned DTOs with backend APIs, reducing integration issues during feature rollout.",
-            "Handled Development → Stage → Production deployments, including feature migrations and refactors.",
             "Actively participated in code reviews and PR discussions (up to 19+ comments per PR), ensuring production-ready delivery.",
         ],
     },

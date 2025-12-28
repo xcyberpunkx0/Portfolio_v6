@@ -16,6 +16,8 @@ export default {
         "text-muted": "var(--text-muted)",
         border: "var(--border)",
         accent: "var(--accent)",
+        "accent-yellow": "#F4D03F",
+        "accent-pink": "#E91E8C",
       },
       fontFamily: {
         sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"],

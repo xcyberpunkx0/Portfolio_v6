@@ -71,23 +71,23 @@ export default function HeroSection({ bio }: HeroSectionProps) {
 
         {/* Social Icons */}
         <div className="flex gap-4 mb-16">
-          <a href="https://github.com" className="social-icon" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/xcyberpunkx0" className="social-icon" target="_blank" rel="noopener noreferrer">
             <FaGithub className="w-4 h-4" />
             <span>GitHub</span>
           </a>
-          <a href="https://linkedin.com" className="social-icon" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/aditya-gup1a/" className="social-icon" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="w-4 h-4" />
             <span>LinkedIn</span>
           </a>
-          <a href="https://auth.geeksforgeeks.org" className="social-icon" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.geeksforgeeks.org/profile/xcyberpunkx0?tab=activity" className="social-icon" target="_blank" rel="noopener noreferrer">
             <SiGeeksforgeeks className="w-4 h-4" />
             <span>GeeksforGeeks</span>
           </a>
-          <a href="https://leetcode.com" className="social-icon" target="_blank" rel="noopener noreferrer">
+          <a href="https://leetcode.com/u/xcyberpunkx0/" className="social-icon" target="_blank" rel="noopener noreferrer">
             <SiLeetcode className="w-4 h-4" />
             <span>LeetCode</span>
           </a>
-          <a href="mailto:your.email@example.com" className="social-icon">
+          <a href="mailto:aditya.gup1a@gmail.com" className="social-icon">
             <FaEnvelope className="w-4 h-4" />
             <span>Email</span>
           </a>
