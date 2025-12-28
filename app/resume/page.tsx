@@ -2,17 +2,23 @@
 
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Button from "@/components/ui/Button";
-import { experiences, education, skills, socialLinks, bio } from "@/lib/constants";
+import { experiences, education, skills, socialLinks, bio, achievements } from "@/lib/constants";
+import { FaTrophy, FaCertificate, FaCode } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function ResumePage() {
   // Split skills into technical and personal
   const technicalSkills = [
-    ...skills["Programming Languages"],
-    ...skills["Frontend Development"],
-    ...skills["Backend Development"],
-    ...skills["Tools & Platforms"],
+    ...skills["Languages"],
+    ...skills["Frameworks"],
+    ...skills["Databases"],
+    ...skills["Gen AI"],
+  ];
+
+  const architectureSkills = [
+    ...skills["Architecture"],
+    ...skills["Concepts"],
   ];
 
   const personalSkills = [
@@ -24,7 +30,7 @@ export default function ResumePage() {
     "Critical Thinking",
   ];
 
-  const tools = skills["Tools & Platforms"] || [];
+  const tools = skills["Developer Tools"] || [];
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -122,12 +128,19 @@ export default function ResumePage() {
                   <div key={index} className={`${index !== 0 ? 'pt-12 border-t border-gray-700/30' : ''}`}>
                     <div className="mb-4">
                       <h3 className="text-2xl font-bold text-white mb-2">{exp.role}</h3>
-                      <p className="text-base text-gray-400 mb-3">{exp.company}</p>
+                      <p className="text-base text-gray-400 mb-3">{exp.company}{exp.location && ` • ${exp.location}`}</p>
                       <span className="inline-block text-sm bg-[#BAE6E6]/10 text-[#BAE6E6] px-4 py-1.5 rounded-full border border-[#BAE6E6]/30">
                         {exp.duration}
                       </span>
                     </div>
-                    <p className="text-gray-300 leading-relaxed">{exp.description}</p>
+                    <ul className="space-y-2 text-gray-300 leading-relaxed">
+                      {exp.description.map((point, i) => (
+                        <li key={i} className="flex gap-3">
+                          <span className="text-[#BAE6E6] mt-1.5">•</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
@@ -154,10 +167,17 @@ export default function ResumePage() {
                   <div key={index} className={`${index !== 0 ? 'pt-12 border-t border-gray-700/30' : ''}`}>
                     <div className="mb-3">
                       <h3 className="text-xl font-bold text-white mb-1">{edu.degree}</h3>
-                      <p className="text-gray-400">{edu.institution}</p>
-                      <span className="inline-block mt-3 text-sm bg-[#F0B4CB]/10 text-[#F0B4CB] px-4 py-1.5 rounded-full border border-[#F0B4CB]/30">
-                        {edu.year}
-                      </span>
+                      <p className="text-gray-400">{edu.institution}{edu.location && `, ${edu.location}`}</p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="inline-block text-sm bg-[#F0B4CB]/10 text-[#F0B4CB] px-4 py-1.5 rounded-full border border-[#F0B4CB]/30">
+                          {edu.year}
+                        </span>
+                        {edu.cgpa && (
+                          <span className="inline-block text-sm bg-[#F4D03F]/10 text-[#F4D03F] px-4 py-1.5 rounded-full border border-[#F4D03F]/30">
+                            CGPA: {edu.cgpa}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     {edu.subjects && (
                       <p className="text-sm text-gray-400 leading-relaxed mt-4">{edu.subjects}</p>
@@ -181,8 +201,8 @@ export default function ResumePage() {
               </span>
             </div>
 
-            {/* Right: Two Skills Cards */}
-            <div className="grid md:grid-cols-2 gap-6">
+            {/* Right: Three Skills Cards */}
+            <div className="grid md:grid-cols-3 gap-6">
               {/* Technical Skills Card */}
               <div className="relative bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-3xl p-8 border border-gray-700/50 overflow-hidden min-h-[400px]">
                 <div className="mb-6">
@@ -208,6 +228,35 @@ export default function ResumePage() {
                   <path
                     d="M 20 80 Q 50 40, 100 60 Q 150 80, 180 50 L 200 100 L 0 100 Z"
                     fill="#E91E8C"
+                  />
+                </svg>
+              </div>
+
+              {/* Architecture & Concepts Card */}
+              <div className="relative bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-3xl p-8 border border-gray-700/50 overflow-hidden min-h-[400px]">
+                <div className="mb-6">
+                  <span className="inline-block bg-[#F4D03F]/15 border-2 border-[#F4D03F] px-5 py-1.5 rounded-full text-[#F4D03F] font-bold text-xs uppercase tracking-wider">
+                    Architecture & Concepts
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-3 relative z-10">
+                  {architectureSkills.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="text-sm px-4 py-2 bg-transparent rounded-full text-gray-300 border border-gray-600/50"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+                {/* Yellow Blob Decoration */}
+                <svg
+                  className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-64 h-32 opacity-40"
+                  viewBox="0 0 200 100"
+                >
+                  <path
+                    d="M 20 80 Q 50 40, 100 60 Q 150 80, 180 50 L 200 100 L 0 100 Z"
+                    fill="#F4D03F"
                   />
                 </svg>
               </div>
@@ -266,6 +315,48 @@ export default function ResumePage() {
                   >
                     {tool}
                   </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+      </section>
+
+      {/* Achievements & Certifications Section */}
+      <section className="max-w-6xl mx-auto px-6 mt-20">
+        <AnimatedSection>
+          <div className="grid md:grid-cols-[200px,1fr] gap-8 items-start">
+            {/* Left: Badge */}
+            <div className="sticky top-32">
+              <span className="inline-block bg-[#F4D03F]/15 border-2 border-[#F4D03F] px-6 py-2 rounded-full text-[#F4D03F] font-bold text-sm uppercase tracking-wider">
+                Achievements
+              </span>
+            </div>
+
+            {/* Right: Achievements Card */}
+            <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-3xl p-8 md:p-12 border border-gray-700/50">
+              <div className="space-y-8">
+                {achievements.map((achievement, index) => (
+                  <div key={index} className={`flex gap-4 ${index !== 0 ? 'pt-8 border-t border-gray-700/30' : ''}`}>
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-[#F4D03F]/10 flex items-center justify-center">
+                        {achievement.title.includes('Certification') ? (
+                          <FaCertificate className="w-5 h-5 text-[#F4D03F]" />
+                        ) : achievement.title.includes('Contributor') ? (
+                          <FaCode className="w-5 h-5 text-[#F4D03F]" />
+                        ) : (
+                          <FaTrophy className="w-5 h-5 text-[#F4D03F]" />
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-1">{achievement.title}</h3>
+                      <p className="text-sm text-gray-400">{achievement.description}</p>
+                      {achievement.issuer && (
+                        <span className="inline-block mt-2 text-xs text-[#BAE6E6]">{achievement.issuer}</span>
+                      )}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

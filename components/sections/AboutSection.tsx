@@ -6,22 +6,23 @@ import {
   SiJavascript,
   SiPython,
   SiTypescript,
-  SiSass,
-  SiPostcss,
+  SiDart,
   SiTailwindcss,
   SiNodedotjs,
   SiMongodb,
   SiMysql,
   SiFirebase,
-  SiPostman,
+  SiSupabase,
   SiGithub,
-  SiGooglecloud,
-  SiVercel,
-  SiOpenai,
   SiGit,
   SiReact,
+  SiNextdotjs,
+  SiFlutter,
+  SiExpress,
+  SiOpenai,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
+import { VscCode } from "react-icons/vsc";
 
 interface Skill {
   [category: string]: string[];
@@ -43,39 +44,38 @@ const SkillItem = ({ icon: Icon, name }: { icon: React.ComponentType<{ className
   </span>
 );
 
-// Front-end skills with icons
-const frontendSkills = [
-  { icon: SiCplusplus, name: "C/C++" },
+// Languages skills with icons
+const languageSkills = [
   { icon: FaJava, name: "Java" },
-  { icon: SiJavascript, name: "JavaScript" },
   { icon: SiPython, name: "Python" },
+  { icon: SiCplusplus, name: "C/C++" },
+  { icon: SiJavascript, name: "JavaScript" },
   { icon: SiTypescript, name: "TypeScript" },
+  { icon: SiDart, name: "Dart" },
 ];
 
-// Styles skills with icons
-const stylesSkills = [
-  { icon: SiSass, name: "SCSS" },
-  { icon: SiSass, name: "SASS" },
-  { icon: SiPostcss, name: "PostCSS" },
-  { icon: SiTailwindcss, name: "Tailwind" },
-];
-
-// Backend skills with icons
-const backendSkills = [
+// Frameworks skills with icons
+const frameworkSkills = [
   { icon: SiNodedotjs, name: "Node.js" },
+  { icon: SiFlutter, name: "Flutter" },
+  { icon: SiReact, name: "React" },
+  { icon: SiNextdotjs, name: "Next.js" },
+  { icon: SiExpress, name: "Express.js" },
+];
+
+// Databases skills with icons
+const databaseSkills = [
   { icon: SiMongodb, name: "MongoDB" },
   { icon: SiMysql, name: "MySQL" },
   { icon: SiFirebase, name: "Firebase" },
-  { icon: SiPostman, name: "Postman" },
+  { icon: SiSupabase, name: "Supabase" },
 ];
 
-// DevOps skills with icons
-const devopsSkills = [
-  { icon: SiGithub, name: "GitHub" },
-  { icon: SiGooglecloud, name: "Google Cloud" },
-  { icon: SiVercel, name: "Vercel" },
-  { icon: SiOpenai, name: "OpenAI" },
+// Developer Tools with icons
+const devToolsSkills = [
   { icon: SiGit, name: "Git" },
+  { icon: VscCode, name: "VS Code" },
+  { icon: SiGithub, name: "GitHub" },
 ];
 
 export default function AboutSection({ bio, skills }: AboutSectionProps) {
@@ -114,53 +114,53 @@ export default function AboutSection({ bio, skills }: AboutSectionProps) {
               <span className="italic">software engineer</span>. More than 2 years experience.
             </p>
 
-            {/* Front-end Pill */}
+            {/* Languages Pill */}
             <div className="skill-pill">
-              <h3 className="text-lg font-bold mb-3">Front-end</h3>
+              <h3 className="text-lg font-bold mb-3">Languages</h3>
               <div className="text-sm text-text-secondary mono flex flex-wrap gap-x-3 gap-y-1">
-                {frontendSkills.map((skill, index) => (
+                {languageSkills.map((skill, index) => (
                   <span key={skill.name} className="inline-flex items-center">
                     <SkillItem icon={skill.icon} name={skill.name} />
-                    {index < frontendSkills.length - 1 && <span className="ml-3">/</span>}
+                    {index < languageSkills.length - 1 && <span className="ml-3">/</span>}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Styles Pill */}
+            {/* Frameworks Pill */}
             <div className="skill-pill inline-block">
-              <h3 className="text-lg font-bold mb-3">Styles</h3>
+              <h3 className="text-lg font-bold mb-3">Frameworks</h3>
               <div className="text-sm text-text-secondary mono flex flex-wrap gap-x-3 gap-y-1">
-                {stylesSkills.map((skill, index) => (
+                {frameworkSkills.map((skill, index) => (
                   <span key={skill.name} className="inline-flex items-center">
                     <SkillItem icon={skill.icon} name={skill.name} />
-                    {index < stylesSkills.length - 1 && <span className="ml-3">/</span>}
+                    {index < frameworkSkills.length - 1 && <span className="ml-3">/</span>}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Back-end Pill */}
+            {/* Databases Pill */}
             <div className="skill-pill">
-              <h3 className="text-lg font-bold mb-3">Back-end</h3>
+              <h3 className="text-lg font-bold mb-3">Databases</h3>
               <div className="text-sm text-text-secondary mono flex flex-wrap gap-x-3 gap-y-1">
-                {backendSkills.map((skill, index) => (
+                {databaseSkills.map((skill, index) => (
                   <span key={skill.name} className="inline-flex items-center">
                     <SkillItem icon={skill.icon} name={skill.name} />
-                    {index < backendSkills.length - 1 && <span className="ml-3">/</span>}
+                    {index < databaseSkills.length - 1 && <span className="ml-3">/</span>}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* DevOps Pill */}
+            {/* Developer Tools Pill */}
             <div className="skill-pill">
-              <h3 className="text-lg font-bold mb-3">DevOps</h3>
+              <h3 className="text-lg font-bold mb-3">Developer Tools</h3>
               <div className="text-sm text-text-secondary mono flex flex-wrap gap-x-3 gap-y-1">
-                {devopsSkills.map((skill, index) => (
+                {devToolsSkills.map((skill, index) => (
                   <span key={skill.name} className="inline-flex items-center">
                     <SkillItem icon={skill.icon} name={skill.name} />
-                    {index < devopsSkills.length - 1 && <span className="ml-3">/</span>}
+                    {index < devToolsSkills.length - 1 && <span className="ml-3">/</span>}
                   </span>
                 ))}
               </div>
@@ -227,9 +227,9 @@ export default function AboutSection({ bio, skills }: AboutSectionProps) {
                   <SiGithub className="w-16 h-16 text-[#f5f5f5]" />
                 </div>
 
-                {/* Vercel - Medium */}
+                {/* Flutter - Medium */}
                 <div className="absolute top-[48%] right-[12%] opacity-50 hover:opacity-100 hover:scale-110 transition-all">
-                  <SiVercel className="w-11 h-11 text-[#f5f5f5]" />
+                  <SiFlutter className="w-11 h-11 text-[#f5f5f5]" />
                 </div>
 
                 {/* MySQL - Tiny */}
@@ -242,19 +242,19 @@ export default function AboutSection({ bio, skills }: AboutSectionProps) {
                   <SiCplusplus className="w-20 h-20 text-[#f5f5f5]" />
                 </div>
 
-                {/* Postman - Small */}
+                {/* Next.js - Medium */}
                 <div className="absolute bottom-[25%] right-[28%] opacity-45 hover:opacity-100 hover:scale-110 transition-all">
-                  <SiPostman className="w-7 h-7 text-[#f5f5f5]" />
+                  <SiNextdotjs className="w-10 h-10 text-[#f5f5f5]" />
                 </div>
 
-                {/* Google Cloud - Medium, bottom */}
+                {/* OpenAI - Medium, bottom */}
                 <div className="absolute bottom-[8%] right-[45%] opacity-50 hover:opacity-100 hover:scale-110 transition-all">
-                  <SiGooglecloud className="w-10 h-10 text-[#f5f5f5]" />
+                  <SiOpenai className="w-10 h-10 text-[#f5f5f5]" />
                 </div>
 
-                {/* OpenAI - Tiny, scattered */}
+                {/* Dart - Tiny, scattered */}
                 <div className="absolute top-[42%] left-[12%] opacity-35 hover:opacity-100 hover:scale-110 transition-all">
-                  <SiOpenai className="w-6 h-6 text-[#f5f5f5]" />
+                  <SiDart className="w-6 h-6 text-[#f5f5f5]" />
                 </div>
               </div>
             </div>
