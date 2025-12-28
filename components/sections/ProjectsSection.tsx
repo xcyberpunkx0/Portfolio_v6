@@ -1,172 +1,145 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { workProjects } from "@/lib/constants";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  company?: string;
-  link: string;
-  date?: string;
-  images?: string[];
-}
-
-interface ProjectsSectionProps {
-  projects: Project[];
-}
-
-export default function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoveredImage, setHoveredImage] = useState<number | null>(null);
-
-  const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const currentProject = projects[currentIndex];
+export default function ProjectsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
   return (
-    <section id="projects" className="py-32 border-t border-[#303030] relative overflow-hidden">
+    <section ref={containerRef} className="py-16 md:py-32 px-4 md:px-8 bg-[#0a0a0a] overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <p className="mono text-sm text-white mb-8">... /Projects ...</p>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-5xl md:text-7xl font-bold mb-4">
+            Featured <span className="text-accent-yellow">Projects</span>
+          </h2>
+          <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+            Some of my recent work that showcases my skills
+          </p>
+        </motion.div>
 
-        {/* Project Title - Large Display */}
-        <div className="mb-16">
-          <h2 className="text-7xl font-bold tracking-tight">{currentProject.title}</h2>
-          {currentProject.date && (
-            <p className="mono text-text-secondary mt-4 text-lg">{currentProject.date}</p>
-          )}
-        </div>
-
-        {/* Creative Image Layout */}
-        <div className="relative min-h-[700px]">
-          {/* Decorative background elements */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20%" cy="40%" r="300" fill="none" stroke="rgba(200, 200, 200, 0.08)" strokeWidth="1" />
-            <circle cx="80%" cy="60%" r="250" fill="none" stroke="rgba(200, 200, 200, 0.06)" strokeWidth="1" />
-            <path d="M 100 400 Q 500 200 900 450" fill="none" stroke="rgba(200, 200, 200, 0.1)" strokeWidth="1" />
-          </svg>
-
-          {currentProject.images && currentProject.images.length > 0 ? (
-            <>
-              {/* Main Hero Image - Large, front and center */}
-              <div 
-                className={`absolute left-0 top-0 w-[55%] transition-all duration-500 ease-out ${
-                  hoveredImage === 0 ? "z-30 scale-[1.02]" : hoveredImage !== null ? "z-10 opacity-70" : "z-20"
-                }`}
-                onMouseEnter={() => setHoveredImage(0)}
-                onMouseLeave={() => setHoveredImage(null)}
-              >
-                <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-[#303030] shadow-2xl bg-[#1a1a1a]">
-                  <Image
-                    src={currentProject.images[0]}
-                    alt={`${currentProject.title} main view`}
-                    fill
-                    className="object-cover object-top"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                </div>
-              </div>
-
-              {/* Second Image - Overlapping right */}
-              {currentProject.images[1] && (
-                <div 
-                  className={`absolute right-0 top-24 w-[50%] transition-all duration-500 ease-out ${
-                    hoveredImage === 1 ? "z-30 scale-[1.02]" : hoveredImage !== null ? "z-10 opacity-70" : "z-10"
-                  }`}
-                  onMouseEnter={() => setHoveredImage(1)}
-                  onMouseLeave={() => setHoveredImage(null)}
-                >
-                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-[#303030] shadow-2xl bg-[#1a1a1a]">
-                    <Image
-                      src={currentProject.images[1]}
-                      alt={`${currentProject.title} form view`}
-                      fill
-                      className="object-cover object-top"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  </div>
-                </div>
-              )}
-
-              {/* Third Image - Bottom left, offset */}
-              {currentProject.images[2] && (
-                <div 
-                  className={`absolute left-[15%] bottom-0 w-[45%] transition-all duration-500 ease-out ${
-                    hoveredImage === 2 ? "z-30 scale-[1.02]" : hoveredImage !== null ? "z-10 opacity-70" : "z-15"
-                  }`}
-                  onMouseEnter={() => setHoveredImage(2)}
-                  onMouseLeave={() => setHoveredImage(null)}
-                >
-                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-[#303030] shadow-2xl bg-[#1a1a1a]">
-                    <Image
-                      src={currentProject.images[2]}
-                      alt={`${currentProject.title} preview`}
-                      fill
-                      className="object-cover object-top"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  </div>
-                </div>
-              )}
-            </>
-          ) : (
-            <div className="w-full aspect-[16/9] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-3xl border border-[#303030] flex items-center justify-center">
-              <div className="text-6xl opacity-30">💻</div>
-            </div>
-          )}
-        </div>
-
-        {/* Bottom Info Bar */}
-        <div className="mt-20 flex items-end justify-between">
-          {/* Left: Description & Tags */}
-          <div className="max-w-xl space-y-6">
-            <p className="text-text-secondary leading-relaxed">
-              {currentProject.description}
-            </p>
-            
-            <div className="flex flex-wrap gap-2">
-              {currentProject.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 border border-[#303030] rounded-full text-sm mono hover:bg-white hover:text-black transition-colors"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Actions */}
-          <div className="flex items-center gap-4">
-            {currentProject.link && currentProject.link !== "#" && (
-              <a
-                href={currentProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-white"
-              >
-                View Live →
-              </a>
-            )}
-            
-            {projects.length > 1 && (
-              <div className="flex gap-2">
-                <button onClick={prevProject} className="circle-btn" aria-label="Previous">←</button>
-                <button onClick={nextProject} className="circle-btn" aria-label="Next">→</button>
-              </div>
-            )}
-          </div>
+        {/* Projects Grid */}
+        <div className="grid gap-12">
+          {workProjects.map((project, index) => (
+            <ProjectCard key={index} project={project} index={index} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: (typeof workProjects)[0];
+  index: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "center center"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
+
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.div
+      ref={cardRef}
+      style={{ y, opacity, scale }}
+      className={`grid md:grid-cols-2 gap-8 items-center ${
+        isEven ? "" : "md:direction-rtl"
+      }`}
+    >
+      {/* Project Image/Preview */}
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        className={`relative aspect-video rounded-3xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50 ${
+          isEven ? "" : "md:order-2"
+        }`}
+      >
+        {project.images && project.images.length > 0 ? (
+          <img
+            src={project.images[0]}
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-accent-yellow/20 to-accent-pink/20 flex items-center justify-center">
+            <span className="text-6xl font-bold opacity-20">{project.title[0]}</span>
+          </div>
+        )}
+
+        {/* Overlay on hover */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          className="absolute inset-0 bg-black/60 flex items-center justify-center gap-4"
+        >
+          {project.link && project.link !== "#" && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 rounded-full bg-white text-black hover:scale-110 transition-transform"
+            >
+              <FaExternalLinkAlt className="w-5 h-5" />
+            </a>
+          )}
+        </motion.div>
+      </motion.div>
+
+      {/* Project Info */}
+      <div className={`${isEven ? "" : "md:order-1 md:text-right"}`}>
+        <p className="text-accent-yellow font-mono text-sm mb-2">{project.date}</p>
+        <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
+        <p className="text-text-secondary mb-6 leading-relaxed">
+          {project.description}
+        </p>
+
+        {/* Tags */}
+        <div className={`flex flex-wrap gap-2 ${isEven ? "" : "md:justify-end"}`}>
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-3 py-1 rounded-full text-xs bg-white/5 border border-white/10"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Links */}
+        {project.link && project.link !== "#" && (
+          <motion.a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-full bg-accent-yellow text-black font-semibold hover:shadow-lg hover:shadow-accent-yellow/30 transition-shadow`}
+          >
+            View Project <FaExternalLinkAlt className="w-3.5 h-3.5" />
+          </motion.a>
+        )}
+      </div>
+    </motion.div>
   );
 }

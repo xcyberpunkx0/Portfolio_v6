@@ -25,14 +25,6 @@ export const workProjects = [
             "/images/projects/invoice_maker_preview.png",
         ],
     },
-    {
-        title: "Variable",
-        description: "Built a fully responsive business SaaS landing page using React and TailwindCSS. Optimized page performance, reducing load times by 30% and lowering the bounce rate by 20%. Analyzed 10 SaaS Websites, adopting 3 features used by 300+ active users.",
-        link: "#",
-        tags: ["HTML5", "TailwindCSS", "React"],
-        date: "Dec 2024",
-        images: [],
-    },
 ];
 
 export const experiences = [
@@ -85,6 +77,12 @@ export const education = [
         cgpa: "8.01",
         subjects: "Data Structures & Algorithms, OOPs & Design Patterns, Computer Networks, SDLC, Agile methodologies, DBMS, Operating Systems",
     },
+    {
+        degree: "Higher Secondary Education",
+        institution: "Amrita Vidyalayam",
+        year: "2017 - 2019",
+        subjects: "Physics, Chemistry, Mathematics, and Computer Science",
+    },
 ];
 
 export const skills = {
@@ -101,13 +99,13 @@ export const achievements = [
     {
         title: "Google Cloud Platform Certification",
         description: "Achieved in 2 months, demonstrating proficiency in cloud architecture, networking, and services.",
-        link: "#",
+        link: "https://www.skills.google/public_profiles/8711ba1b-54e0-4b3c-8125-0911b884935b",
     },
     {
         title: "Responsive Web Design Certification",
         description: "Achieved after completing 300+ hours of coursework.",
         issuer: "FreeCodeCamp",
-        link: "#",
+        link: "https://www.freecodecamp.org/certification/adityagup1a/responsive-web-design",
     },
     {
         title: "HacktoberFest Contributor (2019-2022)",
