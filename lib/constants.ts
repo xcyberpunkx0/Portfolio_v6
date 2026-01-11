@@ -121,7 +121,7 @@ export const socialLinks = {
     leetcode: "https://leetcode.com/u/xcyberpunkx0/",
     email: "adityagup1a@gmail.com",
     phone: "+91 8918738039",
-    resume: "https://drive.google.com/file/d/1Flti6x21PbYV2SuPC4UonumtQN_mQAOQ/view?usp=sharing",
+    resume: "https://drive.google.com/file/d/19wGr-kXeTaXC7aYrZP8bwq2LzF1bnSGO/view?usp=sharing",
 };
 
 export const bio = {
