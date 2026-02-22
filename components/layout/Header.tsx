@@ -1,69 +1,85 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaHome, FaUser, FaFileAlt } from "react-icons/fa";
+import { useState, useRef } from "react";
 
 export default function Header() {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const originalText = "~/aditya_gupta";
+  const [logoText, setLogoText] = useState(originalText);
+  const chars = "!<>-_\\\\/[]{}—=+*^?#________";
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about-me" },
+    { name: "Components", href: "/components" },
+  ];
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const handleHover = () => {
+    let iteration = 0;
+    
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    intervalRef.current = setInterval(() => {
+      setLogoText(
+        originalText
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return originalText[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("")
+      );
+
+      if (iteration >= originalText.length) {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      }
+
+      iteration += 1 / 3; // Slower iteration for visibility
+    }, 30);
+  };
+
+  const handleMouseLeave = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    setLogoText(originalText);
+  };
 
   return (
-    <header
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ${
-        isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
-      }`}
-    >
-      <nav className="flex items-center gap-1 bg-[#1a1a1a] border border-[#303030] rounded-full px-2 py-2">
-        {/* Home */}
-        <Link
-          href="/"
-          className={`p-3 rounded-full transition-all ${
-            pathname === "/" ? "bg-[#303030] text-white" : "text-text-secondary hover:text-white hover:bg-[#252525]"
-          }`}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-zinc-900/50">
+      <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+        <Link 
+          href="/" 
+          className="font-mono text-sm text-zinc-300 hover:text-zinc-100 transition-colors inline-block w-[140px]"
+          onMouseEnter={handleHover}
+          onMouseLeave={handleMouseLeave}
         >
-          <FaHome className="w-4 h-4" />
+          {logoText}
         </Link>
 
-        {/* Divider */}
-        <div className="w-px h-6 bg-[#303030] mx-1"></div>
-
-        {/* About */}
-        <Link
-          href="/#about"
-          className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
-            pathname === "/#about" 
-              ? "bg-[#303030] text-white" 
-              : "text-text-secondary hover:text-white hover:bg-[#252525]"
-          }`}
-        >
-          <FaUser className="w-4 h-4" />
-          <span className="text-sm">About</span>
-        </Link>
-
-        {/* Resume */}
-        <Link
-          href="/resume"
-          className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
-            pathname === "/resume" 
-              ? "bg-[#303030] text-white" 
-              : "text-text-secondary hover:text-white hover:bg-[#252525]"
-          }`}
-        >
-          <FaFileAlt className="w-4 h-4" />
-          <span className="text-sm">Resume</span>
-        </Link>
-      </nav>
+        <nav className="flex items-center gap-6">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (pathname?.startsWith(link.href) && link.href !== '/');
+            
+            return (
+               <Link
+                key={link.name}
+                href={link.href}
+                className={`text-[13px] font-mono transition-colors ${
+                  isActive 
+                    ? "text-zinc-200" 
+                    : "text-zinc-500 hover:text-zinc-300"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </header>
   );
 }
