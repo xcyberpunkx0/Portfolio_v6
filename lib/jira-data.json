@@ -1,0 +1,72 @@
+[
+  {
+    "id": "MIRROR-351",
+    "title": "Update App Version & Github Workflow",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-351",
+    "date": "Dec 4, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-349",
+    "title": "App Drawer Padding Fix",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-349",
+    "date": "Dec 4, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-324",
+    "title": "Implement Sockets For Mobile",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-324",
+    "date": "Nov 19, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-325",
+    "title": "Implement Sockets For Web",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-325",
+    "date": "Nov 19, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-323",
+    "title": "Implement Send & Get All Messages on Web",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-323",
+    "date": "Nov 17, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-322",
+    "title": "Implement Send & Get All Messages on Mobile",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-322",
+    "date": "Nov 17, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-313",
+    "title": "Implement Get all Conversations on Mobile",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-313",
+    "date": "Nov 13, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-319",
+    "title": "Update API Integration for Generate Key Pair",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-319",
+    "date": "Nov 13, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-272",
+    "title": "Migrate Chat UI for Mobile",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-272",
+    "date": "Nov 13, 2025",
+    "type": "Task"
+  },
+  {
+    "id": "MIRROR-268",
+    "title": "Add Chat UI for Web",
+    "link": "https://theawareai.atlassian.net/browse/MIRROR-268",
+    "date": "Nov 13, 2025",
+    "type": "Task"
+  }
+]

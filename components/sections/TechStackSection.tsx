@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 
 export default function TechStackSection() {
   const techs = [
@@ -61,12 +60,7 @@ export default function TechStackSection() {
 
   return (
     <section className="max-w-3xl mx-auto px-6 pb-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div>
         <h2 className="text-xs text-zinc-600 uppercase tracking-widest mb-4">Tech Stack</h2>
         
         <div className="flex flex-wrap gap-2 sm:gap-4 md:gap-6 items-center">
@@ -80,7 +74,7 @@ export default function TechStackSection() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

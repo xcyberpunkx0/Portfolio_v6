@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { workProjects, openSourceProjects } from "@/lib/constants";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
@@ -10,12 +9,7 @@ export default function ProjectsSection() {
 
   return (
     <section className="max-w-3xl mx-auto px-6 pb-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div>
         <h2 className="text-xl font-semibold text-zinc-50 mb-6">Featured Projects</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -67,7 +61,7 @@ export default function ProjectsSection() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

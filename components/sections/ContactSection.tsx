@@ -1,18 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { socialLinks } from "@/lib/constants";
 
 export default function ContactSection() {
   return (
     <section className="max-w-3xl mx-auto px-6 pb-32 pt-10">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col border-t border-zinc-800/50 pt-10"
-      >
+      <div className="flex flex-col border-t border-zinc-800/50 pt-10">
         <h2 className="text-3xl font-semibold text-zinc-50 mb-4 tracking-tight">Let's work together.</h2>
         <p className="text-zinc-400 mb-8 max-w-md">
           I'm currently available for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
@@ -29,7 +22,7 @@ export default function ContactSection() {
             GitHub
           </a>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

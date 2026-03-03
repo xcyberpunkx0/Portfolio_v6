@@ -1,17 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { experiences } from "@/lib/constants";
 
 export default function ExperienceSection() {
   return (
     <section className="max-w-3xl mx-auto px-6 pb-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div>
         <h2 className="text-xl font-semibold text-zinc-50 mb-8">Experience</h2>
         
         <div className="flex flex-col gap-8 border-l border-zinc-800/50 pl-6 ml-2">
@@ -35,7 +29,7 @@ export default function ExperienceSection() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
