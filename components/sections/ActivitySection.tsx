@@ -24,8 +24,16 @@ export default function ActivitySection() {
     return () => clearInterval(interval);
   }, []);
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Generate mock grayscale contribution data matching the width of a full year (52 weeks)
   const contributions = useMemo(() => {
+    if (!isMounted) return [];
+    
     const weeks = 52;
     return Array.from({ length: weeks }).map(() => {
       return Array.from({ length: 7 }).map(() => {
@@ -33,7 +41,7 @@ export default function ActivitySection() {
         return Math.random() > 0.6 ? Math.floor(Math.random() * 4) + 1 : 0;
       });
     });
-  }, []);
+  }, [isMounted]);
 
   const getGrayscaleColor = (level: number) => {
     switch (level) {
