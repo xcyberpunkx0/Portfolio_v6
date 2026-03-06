@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { socialLinks } from "@/lib/constants";
-import { FiCode, FiMapPin, FiMail, FiClock, FiGlobe, FiUser } from "react-icons/fi";
+import { FiMapPin, FiMail, FiClock, FiGlobe, FiUsers } from "react-icons/fi";
 
 const ROLES = [
   "Software Engineer",
@@ -79,31 +79,35 @@ export default function HeroSection({ onTerminalOpen }: { onTerminalOpen?: () =>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               {/* Left Column */}
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <span className="flex items-center justify-center w-6 h-6 md:w-[1.6rem] md:h-[1.6rem] border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0">
-                    <FiCode size={14} className="text-zinc-400" />
+              <div className="space-y-2 md:space-y-2.5">
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center justify-center w-[26px] h-[26px] md:w-7 md:h-7 border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[14px] h-[14px] text-zinc-400">
+                      <path d="m18 16 4-4-4-4" />
+                      <path d="m6 8-4 4 4 4" />
+                      <path d="m14.5 4-5 16" />
+                    </svg>
                   </span>
-                  <div className="flex items-center gap-1.5 md:gap-2">
-                    <span className="text-xs md:text-sm text-zinc-300">Full-Stack Developer</span>
+                  <div className="flex items-center">
+                    <span className="text-[13px] md:text-[14px] tracking-[-0.01em] font-mono text-zinc-300">Full-Stack Developer</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 md:gap-3">
-                  <span className="flex items-center justify-center w-6 h-6 md:w-[1.6rem] md:h-[1.6rem] border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0">
-                    <FiMapPin size={14} className="text-zinc-400" />
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center justify-center w-[26px] h-[26px] md:w-7 md:h-7 border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0">
+                    <FiMapPin size={13} className="text-zinc-400" />
                   </span>
-                  <div className="flex items-center gap-1.5 md:gap-2">
-                    <span className="text-xs md:text-sm text-zinc-300">Working Remotely</span>
+                  <div className="flex items-center">
+                    <span className="text-[13px] md:text-[14px] tracking-[-0.01em] font-mono text-zinc-300">Working Remotely</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 md:gap-3 group">
-                  <span className="flex items-center justify-center w-6 h-6 md:w-[1.6rem] md:h-[1.6rem] border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0 group-hover:border-zinc-700 transition-colors">
-                    <FiMail size={14} className="text-zinc-400 group-hover:text-zinc-300 transition-colors" />
+                <div className="flex items-center gap-3 group">
+                  <span className="flex items-center justify-center w-[26px] h-[26px] md:w-7 md:h-7 border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0 group-hover:border-zinc-700 transition-colors">
+                    <FiMail size={13} className="text-zinc-400 group-hover:text-zinc-300 transition-colors" />
                   </span>
-                  <div className="flex items-center gap-1.5 md:gap-2">
-                    <a href={`mailto:${socialLinks.email}`} className="text-xs md:text-sm text-zinc-300 hover:underline transition-all ease-in-out">
+                  <div className="flex items-center">
+                    <a href={`mailto:${socialLinks.email}`} className="text-[13px] md:text-[14px] tracking-[-0.01em] font-mono text-zinc-300 hover:underline transition-all ease-in-out">
                       {socialLinks.email}
                     </a>
                   </div>
@@ -111,34 +115,34 @@ export default function HeroSection({ onTerminalOpen }: { onTerminalOpen?: () =>
               </div>
 
               {/* Right Column */}
-              <div className="space-y-1.5 hidden md:block">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <span className="flex items-center justify-center w-6 h-6 md:w-[1.6rem] md:h-[1.6rem] border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0">
-                    <FiClock size={14} className="text-zinc-400" />
+              <div className="space-y-2 md:space-y-2.5 hidden md:block">
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center justify-center w-[26px] h-[26px] md:w-7 md:h-7 border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0">
+                    <FiClock size={13} className="text-zinc-400" />
                   </span>
-                  <div className="flex items-center gap-1.5 md:gap-2">
-                    <span className="text-sm text-zinc-300">{timeStr || "00:00 AM"}</span>
-                    <span className="text-xs text-zinc-600">// same time</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[13px] md:text-[14px] tracking-[-0.01em] font-mono text-zinc-300">{timeStr || "00:00 AM"}</span>
+                    <span className="text-[11px] md:text-[12px] tracking-[-0.01em] font-mono text-zinc-600">// same time</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 md:gap-3 group">
-                  <span className="flex items-center justify-center w-6 h-6 md:w-[1.6rem] md:h-[1.6rem] border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0 group-hover:border-zinc-700 transition-colors">
-                    <FiGlobe size={14} className="text-zinc-400 group-hover:text-zinc-300 transition-colors" />
+                <div className="flex items-center gap-3 group">
+                  <span className="flex items-center justify-center w-[26px] h-[26px] md:w-7 md:h-7 border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0 group-hover:border-zinc-700 transition-colors">
+                    <FiGlobe size={13} className="text-zinc-400 group-hover:text-zinc-300 transition-colors" />
                   </span>
-                  <div className="flex items-center gap-1.5 md:gap-2">
-                    <a href={(socialLinks as any).website || "https://adityagupta.xyz"} target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm text-zinc-300 hover:underline transition-all ease-in-out">
+                  <div className="flex items-center">
+                    <a href={(socialLinks as any).website || "https://adityagupta.xyz"} target="_blank" rel="noopener noreferrer" className="text-[13px] md:text-[14px] tracking-[-0.01em] font-mono text-zinc-300 hover:text-zinc-200 transition-colors">
                       adityagupta.xyz
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 md:gap-3">
-                  <span className="flex items-center justify-center w-6 h-6 md:w-[1.6rem] md:h-[1.6rem] border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0">
-                    <FiUser size={14} className="text-zinc-400" />
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center justify-center w-[26px] h-[26px] md:w-7 md:h-7 border border-[#292929] rounded-lg bg-zinc-800/50 shrink-0">
+                    <FiUsers size={13} className="text-zinc-400" />
                   </span>
-                  <div className="flex items-center gap-1.5 md:gap-2">
-                    <span className="text-xs md:text-sm text-zinc-300">he/him</span>
+                  <div className="flex items-center">
+                    <span className="text-[13px] md:text-[14px] tracking-[-0.01em] font-mono text-zinc-300">he/him</span>
                   </div>
                 </div>
               </div>
