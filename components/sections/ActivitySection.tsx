@@ -106,7 +106,7 @@ export default function ActivitySection() {
   };
 
   return (
-    <section className="max-w-3xl mx-auto px-6 pb-20">
+    <section className="max-w-3xl mx-auto px-6 pb-10">
       <div className="flex flex-col gap-10">
         {/* Spotify Component */}
         <a 

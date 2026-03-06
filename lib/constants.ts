@@ -33,6 +33,7 @@ export const experiences = [
         role: "Software Engineer",
         duration: "June 2025 - Dec 2025",
         location: "Hybrid",
+        logo: "/icons/logos/1685525065643.jpg",
         description: [
             "Implemented end-to-end chat features across Web and Mobile, including sending/receiving messages and fetching complete conversation histories.",
             "Built secure conversation workflows such as connection requests and accept/reject flows for professional users.",
@@ -49,6 +50,7 @@ export const experiences = [
         role: "Web Developer",
         duration: "Feb 2024 - Mar 2025",
         location: "Remote",
+        logo: "/icons/logos/theporter_in_logo.jpg",
         description: [
             "Designed interactive UI components with React.js, enhancing the user experience for both students and teachers, resulting in a 25% increase in user engagement.",
             "Integrated robust content management features (e.g., event calendar, announcements) to automate updates, reducing manual interventions by 20%.",
@@ -60,6 +62,7 @@ export const experiences = [
         role: "Salesforce Developer",
         duration: "Oct 2023 - Nov 2023",
         location: "Remote",
+        logo: "/icons/logos/salesforce_logo.jpg",
         description: [
             "Conducted comprehensive testing and debugging of Apex code, resolving over 200 bugs and ensuring a 99.8% error-free deployment.",
             "Built over 20 Lightning Web Components (LWCs) to create modern and responsive user interfaces, resulting in a 30% increase in user engagement and reducing page load times by 40%.",

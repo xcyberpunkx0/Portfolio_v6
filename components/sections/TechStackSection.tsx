@@ -59,18 +59,18 @@ export default function TechStackSection() {
   ];
 
   return (
-    <section className="max-w-3xl mx-auto px-6 pb-20">
+    <section className="max-w-3xl mx-auto px-6 pb-10">
       <div>
-        <h2 className="text-xs text-zinc-600 uppercase tracking-widest mb-4">Tech Stack</h2>
+        <h2 className="text-[11px] text-zinc-600 uppercase tracking-[0.2em] font-light mb-4">Tech Stack</h2>
         
-        <div className="flex flex-wrap gap-2 sm:gap-4 md:gap-6 items-center">
+        <div className="flex flex-wrap gap-4 items-center">
           {accurateTechs.map((tech) => (
             <div
               key={tech.name}
-              className="w-5.5 h-5.5 sm:w-9 sm:h-9 object-contain hover:scale-110 transition-transform duration-200 cursor-pointer flex items-center justify-center p-1"
+              className="w-8 h-8 sm:w-9 sm:h-9 hover:scale-110 transition-transform duration-200 cursor-pointer flex items-center justify-center"
               title={tech.name}
             >
-              <i className={`${tech.iconClass} text-[24px] sm:text-[36px] opacity-90 hover:opacity-100 drop-shadow-sm`}></i>
+              <i className={`${tech.iconClass} text-[28px] sm:text-[32px] opacity-90 hover:opacity-100`}></i>
             </div>
           ))}
         </div>
