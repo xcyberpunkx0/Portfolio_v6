@@ -6,7 +6,7 @@ export default function ExperienceSection() {
   return (
     <section className="max-w-3xl mx-auto px-6 pb-10">
       <div>
-        <h2 className="text-xl font-semibold text-zinc-50 mb-8">Experience</h2>
+        <h2 className="text-[11px] text-zinc-600 uppercase tracking-[0.2em] font-light mb-6">Experience</h2>
         
         <div className="flex flex-col gap-5">
           {experiences.map((exp, idx) => (
