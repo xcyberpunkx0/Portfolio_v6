@@ -11,7 +11,7 @@ export default function AboutPage() {
     ...skills["Databases"] || [],
     ...skills["Architecture"] || [],
     ...skills["Developer Tools"] || [],
-    ...skills["Gen AI"] || []
+    ...skills["GenAI"] || []
   ];
 
   return (
