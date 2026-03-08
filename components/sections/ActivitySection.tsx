@@ -142,16 +142,12 @@ export default function ActivitySection() {
             </div>
           </div>
           
-          <div className="hidden sm:flex items-center justify-center mr-2">
-             <button className="w-8 h-8 rounded-lg bg-[#111111] border border-zinc-800 flex items-center justify-center group-hover:bg-[#1A1A1A] group-hover:border-zinc-700 transition-colors" aria-label="Play">
+          <div className="flex items-center justify-center mr-2">
+             <button className="w-8 h-8 rounded-full bg-[#111111] border border-zinc-800 flex items-center justify-center group-hover:bg-[#1A1A1A] group-hover:border-zinc-700 transition-colors" aria-label="Play">
                {spotifyData?.isPlaying ? (
-                 <div className="w-3 h-3 flex gap-[2px] items-end justify-center">
-                   <motion.div animate={{ height: [4, 12, 4] }} transition={{ repeat: Infinity, duration: 1 }} className="w-[3px] bg-[#1DB954] rounded-full"></motion.div>
-                   <motion.div animate={{ height: [8, 4, 8] }} transition={{ repeat: Infinity, duration: 1 }} className="w-[3px] bg-[#1DB954] rounded-full"></motion.div>
-                   <motion.div animate={{ height: [6, 10, 6] }} transition={{ repeat: Infinity, duration: 1 }} className="w-[3px] bg-[#1DB954] rounded-full"></motion.div>
-                 </div>
+                 <FaSpotify className="text-zinc-300 text-[18px]" />
                ) : (
-                 <svg className="w-3 h-3 text-zinc-300 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                 <FaSpotify className="text-zinc-500 text-[18px]" />
                )}
              </button>
           </div>
