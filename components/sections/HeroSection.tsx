@@ -8,7 +8,7 @@ import { FiMapPin, FiMail, FiClock, FiGlobe, FiUsers } from "react-icons/fi";
 
 const ROLES = [
   "Software Engineer",
-  "Full-Stack Developer",
+  "Frontend Developer",
   "Software Tinkerer"
 ];
 
@@ -89,7 +89,7 @@ export default function HeroSection({ onTerminalOpen }: { onTerminalOpen?: () =>
                     </svg>
                   </span>
                   <div className="flex items-center">
-                    <span className="text-[13px] md:text-[14px] tracking-[-0.01em] font-mono text-zinc-300">Full-Stack Developer</span>
+                    <span className="text-[13px] md:text-[14px] tracking-[-0.01em] font-mono text-zinc-300">Frontend Developer</span>
                   </div>
                 </div>
 

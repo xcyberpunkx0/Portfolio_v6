@@ -11,7 +11,7 @@ export default function TechStackSection() {
     { name: "React", iconClass: "devicon-react-original colored" },
     { name: "Next.js", iconClass: "devicon-nextjs-original-wordmark bg-white rounded-full p-1" }, // Matches circular N
     { name: "Tailwind CSS", iconClass: "devicon-tailwindcss-original colored" },
-    { name: "Express", iconClass: "devicon-express-original text-white" },
+    { name: "C/C++", iconClass: "devicon-cplusplus-plain colored" },
     { name: "Firebase", iconClass: "devicon-firebase-plain colored" },
     { name: "Git", iconClass: "devicon-git-plain colored" },
     { name: "GitHub", iconClass: "devicon-github-original bg-white text-black rounded-full" }, // GitHub circular white
@@ -20,11 +20,9 @@ export default function TechStackSection() {
     { name: "Figma", iconClass: "devicon-figma-plain colored" },
     { name: "Postman", iconClass: "devicon-postman-plain colored" }, // Circular orange
     { name: "Nginx", iconClass: "devicon-nginx-original colored" },
-    { name: "Bun", iconClass: "devicon-bun-plain colored" },
-    { name: "Prisma", iconClass: "devicon-prisma-original text-white" },
     { name: "React Router", iconClass: "devicon-reactrouter-plain colored" }, // For the red dots icon
-    { name: "GraphQL", iconClass: "devicon-graphql-plain colored" }, // Purple circle icon
     { name: "Supabase", iconClass: "devicon-supabase-plain colored" }, // Green circle icon
+    { name: "Flutter", iconClass: "devicon-flutter-plain colored" },
   ];
 
   // Map exactly to what's in the image:
@@ -40,7 +38,7 @@ export default function TechStackSection() {
     { name: "React", iconClass: "devicon-react-original colored" },
     { name: "Next.js", iconClass: "devicon-nextjs-plain bg-white text-black rounded-full overflow-hidden leading-none flex items-center justify-center p-[2px]" },
     { name: "Tailwind CSS", iconClass: "devicon-tailwindcss-original colored" },
-    { name: "Express", iconClass: "devicon-express-original text-zinc-300" },
+    { name: "C/C++", iconClass: "devicon-cplusplus-plain colored" },
     { name: "Firebase", iconClass: "devicon-firebase-plain colored" },
     { name: "Git", iconClass: "devicon-git-plain colored" },
     { name: "GitHub", iconClass: "devicon-github-original bg-white text-black rounded-full leading-none flex items-center justify-center text-[1.1em]" }, 
@@ -51,11 +49,9 @@ export default function TechStackSection() {
     // Row 2
     { name: "Postman", iconClass: "devicon-postman-plain colored" },
     { name: "Nginx", iconClass: "devicon-nginx-original colored" },
-    { name: "Bun", iconClass: "devicon-bun-plain colored" },
-    { name: "Prisma", iconClass: "devicon-prisma-original text-zinc-300" },
     { name: "React Router", iconClass: "devicon-reactrouter-plain colored" },
-    { name: "GraphQL", iconClass: "devicon-graphql-plain colored" },
     { name: "Supabase", iconClass: "devicon-supabase-plain colored" },
+    { name: "Flutter", iconClass: "devicon-flutter-plain colored" },
   ];
 
   return (

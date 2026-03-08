@@ -93,7 +93,7 @@ export const skills = {
     "Frameworks": ["Node.js", "Flutter", "React", "Next.js", "Express.js"],
     "Developer Tools": ["Git", "VS Code", "PyCharm", "IntelliJ", "Eclipse", "Cursor"],
     "Databases": ["MongoDB", "MySQL", "Firebase", "Supabase"],
-    "Gen AI": ["Prompt Engineering", "LLM Integration", "RAG", "AI-Assisted Development", "Agentic Workflows"],
+    "GenAI": ["LLM Integration", "RAG Pipelines", "Prompt Engineering"],
     "Architecture": ["Clean Architecture", "Repository Pattern", "Use Case Layering"],
     "Concepts": ["Secure Messaging", "API Integration", "Feature Refactoring", "CI/CD Environments"],
 };
